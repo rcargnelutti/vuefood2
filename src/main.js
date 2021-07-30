@@ -2,7 +2,7 @@ require('./bootstrap')
 require('./plugins/index')
 
 import Vue from 'vue'
-import DefaultTemplate from './layouts/DefaultTemplate'
+import BaseTemplate from './layouts/BaseTemplate.vue'
 import router from './routes'
 import store from './store'
 
@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.component('preloader-component', () => import('./components/Preloader'))
 
 new Vue({
-  render: h => h(DefaultTemplate),
+  render: h => h(BaseTemplate),
   router,
   store
 }).$mount('#app')
