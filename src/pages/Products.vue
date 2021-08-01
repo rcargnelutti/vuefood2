@@ -5,10 +5,15 @@
 
         <h1 class="my-4 title-tenant">{{ company.name }}</h1>
         <div class="list-group">
+          <a href="#"
+            :class="['list-group-item', categoryInFilter('')]"
+            @click.prevent="filterByCategory('')"> 
+            Todas
+          </a>
           <a href="#" 
-            class="list-group-item" 
             v-for="(category, index) in categories.data" :key="index"
-            @click.prevent="filterByCategory(category)">
+            :class="['list-group-item', categoryInFilter(category.identify)]" 
+            @click.prevent="filterByCategory(category.identify)">
             {{ category.name }}
           </a>
         </div>
@@ -112,11 +117,15 @@ export default {
           .catch(() => {this.$vToastify.error('Falha ao carregar os produtos.', 'Erro');})
     },
 
-    filterByCategory(category) {
-      this.filters.category = category.identify
+    filterByCategory(identify) {
+      this.filters.category = identify
 
       this.loadProducts()
-    }
+    },
+
+    categoryInFilter(identify){
+      return identify === this.filters.category ? 'active' : ''
+    },
   },
 
 }
