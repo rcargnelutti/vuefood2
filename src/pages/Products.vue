@@ -5,7 +5,10 @@
 
         <h1 class="my-4 title-tenant">{{ company.name }}</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item" v-for="(category, index) in categories.data" :key="index">
+          <a href="#" 
+            class="list-group-item" 
+            v-for="(category, index) in categories.data" :key="index"
+            @click.prevent="filterByCategory(category)">
             {{ category.name }}
           </a>
         </div>
@@ -16,6 +19,10 @@
       <div class="col-lg-9">
 
         <div class="row my-4">
+
+          <div v-if="company.products.data.lenght === 0">
+            Nenhum Produto
+          </div>
 
           <div class="col-lg-4 col-md-6 mb-4" v-for="(product, index) in company.products.data" :key="index">
             <div class="card h-100">
@@ -61,8 +68,9 @@ export default {
     this.getCategoriesByCompany(this.company.id)
       .catch(() => {this.$vToastify.error('Falha ao carregar as categorias.', 'Erro');})
 
-    this.getProductsByCompany(this.company.id)
-      .catch(() => {this.$vToastify.error('Falha ao carregar os produtos.', 'Erro');})
+    //this.getProductsByCompany(this.company.id)
+      //.catch(() => {this.$vToastify.error('Falha ao carregar os produtos.', 'Erro');})
+    this.loadProducts()
 
       //console.log(this.company.products);
   },
@@ -74,12 +82,42 @@ export default {
     })
   },
 
+  data() {
+    return {
+      filters: {
+        category: '',
+      },
+    }
+  },
+
   methods: {
     ...mapActions([
       'getCategoriesByCompany',
       'getProductsByCompany'
-    ])
-  }
+    ]),
+
+    loadProducts () {
+
+      const params = {
+        token_company: this.company.id,
+      }
+
+      if (this.filters.category) {
+        params.categories = [
+          this.filters.category  
+        ]
+      }
+
+      this.getProductsByCompany(params)
+          .catch(() => {this.$vToastify.error('Falha ao carregar os produtos.', 'Erro');})
+    },
+
+    filterByCategory(category) {
+      this.filters.category = category.identify
+
+      this.loadProducts()
+    }
+  },
 
 }
 </script>
