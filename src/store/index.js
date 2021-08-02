@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import companies from './modules/companies'
 import { state, mutations } from './default'
+import companies from './modules/companies'
+import cart from './modules/cart/cart.js'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     modules: {
-        companies
+        companies,
+        cart,
     },
     state,
     mutations
