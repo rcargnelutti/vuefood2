@@ -4,10 +4,6 @@ export default {
     },
 
     mutations: {
-
-    },
-
-    actions: {
         ADD_PRODUCT_CART(state, product) {
             state.products.push({
                 qty: 1,
@@ -16,8 +12,8 @@ export default {
             })
         },
 
-        REMOE_PROD_CART (state, product) {
-            state.products = state.products.filter((prodCart, index) => {
+        REMOVE_PROD_CART (state, product) {
+            state.products = state.products.filter((prodCart) => {
                 return prodCart.identify !== product.identify
             })
         },
@@ -44,6 +40,10 @@ export default {
         CLEAR_CART (state) {
             state.products = []
         },
+    },
+
+    actions: {
+        
     },
 
     getters: {
