@@ -31,7 +31,7 @@
 
           <div class="col-lg-4 col-md-6 mb-4" v-for="(product, index) in company.products.data" :key="index">
             <div :class="['card', 'h-100', {'disabled' : productInCart(product)}]">
-              <a href="#"><img class="card-img-top" :src="product.image" alt=""></a>
+              <a href="#"><img class="card-img-top" width="100" height="200" :src="product.image" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="#">{{ product.title }}</a>
