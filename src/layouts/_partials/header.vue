@@ -14,10 +14,17 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" v-if="me.name" class="nav-link">Olá {{ me.name }}! (<span @click.prevent="logout">sair</span>)</a>
+                            <a href="#" v-if="me.name" class="nav-link">
+                                <i class="fas fa-user"></i> {{ me.name }}
+                            </a>
                             <router-link v-else :to="{name: 'login'}" class="nav-link">
                                 Entrar
                             </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" v-if="me.name" class="nav-link ">
+                                <span class="fas fa-sign-out-alt" @click.prevent="logout"> Sair </span>
+                            </a>
                         </li>
                     </ul>
                 </div>
