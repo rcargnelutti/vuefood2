@@ -40,14 +40,30 @@ export default {
             return axios.post('auth/register', params)
         },
 
-        login ({ commit }, params) {
+        login ({ commit, dispatch }, params) {
             commit('SET_AUTHENTICATED', params)
             return axios.post('auth/token', params)
                         .then(response => {
                             const token = response.data.token
                             localStorage.setItem(TOKEN_NAME, token)
                             //console.log(response.data.token, TOKEN_NAME);
+
+                            dispatch('getMe')
                         })
+        },
+
+        getMe ({ commit }) {
+            const token = localStorage.getItem(TOKEN_NAME)
+            if (!token) return;
+
+            return axios.get('me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => commit('SET_ME', response.data.data))
+            .catch(() => localStorage.removeItem(TOKEN_NAME))
+            
         }
     },
 

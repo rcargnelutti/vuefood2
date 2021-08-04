@@ -99,8 +99,8 @@ export default {
       this.login(params)
           .then( () => {
             this.$vToastify.success('Autenticação realizada com sucesso', 'Parabéns')
-            alert('ok')
-            //this.$router.push({ name: 'login' })
+            //alert('ok')
+            this.$router.push({ name: 'home' })
           })
           .catch( error => {
             console.log(error)
