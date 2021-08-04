@@ -16,7 +16,7 @@
             </div>
             <div class="input-group mb-3">
               <div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <span style="padding: .7rem .8rem;" class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
               <input type="text" v-model="formData.name" name="name" placeholder="Nome"
                 :class="['form-control', 'input_user', {'is-invalid': errors.name != ''}]">
@@ -27,7 +27,7 @@
             </div>
             <div class="input-group mb-3">
               <div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <span style="padding: .7rem .8rem;" class="input-group-text"><i class="fas fa-envelope"></i></span>
               </div>
               <input type="email" v-model="formData.email" name="email" value="" placeholder="E-mail"
                 :class="['form-control', 'input_user', {'is-invalid': errors.email != ''}]">
@@ -38,7 +38,7 @@
             </div>
             <div class="input-group mb-2">
               <div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                <span style="padding: .7rem .8rem;" class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
               <input type="password" v-model="formData.password" name="password" value="" placeholder="Senha"
                 :class="['form-control', 'input_user', {'is-invalid': errors.password != ''}]">
