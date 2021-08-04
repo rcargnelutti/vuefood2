@@ -20,4 +20,6 @@ new Vue({
   store
 }).$mount('#app')
 
+store.dispatch('getMe')
+
 

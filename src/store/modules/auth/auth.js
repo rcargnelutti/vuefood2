@@ -64,7 +64,22 @@ export default {
             .then(response => commit('SET_ME', response.data.data))
             .catch(() => localStorage.removeItem(TOKEN_NAME))
             
-        }
+        },
+
+        logout ({ commit }) {
+            const token = localStorage.getItem(TOKEN_NAME)
+            if (!token) return;
+
+            return axios.post('logout', {}, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                commit('LOGOUT', response)
+                localStorage.removeItem(TOKEN_NAME)
+            })
+        },
     },
 
 }
