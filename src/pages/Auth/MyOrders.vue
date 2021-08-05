@@ -1,3 +1,4 @@
+ 
 <template>
     <div>
         <div class="row my-4">
@@ -5,45 +6,19 @@
         </div>
 
         <div class="row my-4">
-            <div class="col-sm-6 my-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pedido: <strong>KsjjR2</strong></h5>
-                        <p class="card-text">Data: 22/12/2021</p>
-                        <a href="detalhes-pedido.html" class="btn btn-danger">Detalhes</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-6 my-4">
+            <div class="col-sm-6 my-4" v-for="(order, index) in myOrders.data" :key="index">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Pedido: <strong>KsjjR2</strong></h5>
-                        <p class="card-text">Data: 22/12/2021</p>
-                        <a href="detalhes-pedido.html" class="btn btn-danger">Detalhes</a>
+                        <h5 class="card-title">Pedido: <strong>{{ order.identify }}</strong></h5>
+                        <p class="card-text">Data: {{ order.date | dateformat }}</p>
+                        <router-link :to="{name: 'order.detail', params: {identify: order.identify}}" class="btn btn-danger">
+                            Detalhes
+                        </router-link>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 my-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pedido: <strong>KsjjR2</strong></h5>
-                        <p class="card-text">Data: 22/12/2021</p>
-                        <a href="detalhes-pedido.html" class="btn btn-danger">Detalhes</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 my-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pedido: <strong>KsjjR2</strong></h5>
-                        <p class="card-text">Data: 22/12/2021</p>
-                        <a href="detalhes-pedido.html" class="btn btn-danger">Detalhes</a>
-                    </div>
-                </div>
-            </div>
+            
         </div> <!-- orders -->
     </div>
 </template>
