@@ -4,6 +4,7 @@ import Cart from '@/pages/Cart';
 import Login from '@/pages/Auth/Login';
 import Register from '@/pages/Auth/Register';
 import MyOrders from '@/pages/Auth/MyOrders';
+import DetailOrder from '@/pages/DetailOrder';
 
 const routes = [
     {
@@ -11,15 +12,22 @@ const routes = [
         component: () => import('@/layouts/DefaultTemplate'),
         children: [
             {
+                path: '/pedido/:identify',
+                component: DetailOrder,
+                name: 'order.detail',
+                props: true
+            },
+
+            {
                 path: '/meus-pedidos',
                 component: MyOrders,
-                name: 'my.orders'
+                name: 'my.orders',
             },
 
             {
                 path: '/carrinho',
                 component: Cart,
-                name: 'cart'
+                name: 'cart',
             },
         
             {
@@ -32,7 +40,7 @@ const routes = [
             {
                 path: '/',
                 component: Home,
-                name: 'home'
+                name: 'home',
             },
         ]
     },
