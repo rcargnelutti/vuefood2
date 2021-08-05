@@ -137,7 +137,12 @@ export default {
     },
 
     created() {
-        console.log(this.identify);    
+        this.getOrderByIdentify(this.identify)
+                .then(response => this.order = Object.assign(this.order, response.data.data))
+                .catch(() => {
+                    this.$vToastify.error('Falha carregar detalhes do pedido', 'Erro')
+                    this.$router.push({ name: 'home' })
+                })
     },
 
     data() {
