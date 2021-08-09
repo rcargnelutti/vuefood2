@@ -64,7 +64,7 @@
       Avaliar o pedido
     </button>
 
-    <!-- <modal name="evaluation-order" :heigth="350">
+    <modal name="evaluation-order" :heigth="350">
       <div class="px-md-5 my-4">
         <h1>Avaliar o pedido {{ identify }}</h1>
 
@@ -94,7 +94,7 @@
           <span v-else>Avaliar</span>
         </button>
       </div>
-    </modal> -->
+    </modal>
 
     <div class="evaluations-order col-12" v-if="order.evaluations.length">
       <div v-for="(evaluation, index) in order.evaluations" :key="index">
