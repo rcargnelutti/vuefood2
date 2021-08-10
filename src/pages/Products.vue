@@ -3,7 +3,9 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4 title-tenant">{{ company.name }}</h1>
+        <h1 class="my-4 title-tenant">
+          {{ company.name }} (<a href="#" @click.prevent="removeCompanySelected">x</a>)
+        </h1>
         <h2 v-if="company.table.identify">
           Mesa: {{ company.table.name }}
           (<a href="#" @click.prevent="removeTableCompany">x</a>)
@@ -112,6 +114,7 @@ export default {
     ...mapMutations({
       addProdCart: 'ADD_PRODUCT_CART',
       removeTableCompany: 'REMOVE_TABLE_COMPANY',
+      removeCompany: 'REMOVE_COMPANY_SELECTED',
     }),
 
     loadProducts () {
@@ -150,7 +153,12 @@ export default {
 
       return inCart
     },
-  },
 
+    removeCompanySelected () {
+      this.removeCompany()
+
+      this.$router.push({name: 'home'})
+    },
+  },
 }
 </script>
