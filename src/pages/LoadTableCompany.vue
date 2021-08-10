@@ -6,6 +6,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+
 export default {
     props: ['token_company', 'token_table'],
     computed: {
