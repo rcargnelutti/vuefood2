@@ -19,6 +19,14 @@ const mutations = {
     SET_TABLE_COMPANY (state, table) {
         state.companySelected.table = table
     },
+
+    REMOVE_TABLE_COMPANY (state) {
+        state.companySelected.table = {
+            identify: '',
+            description: '',
+            name: ''
+        }
+    },
 }
 
 export default mutations
