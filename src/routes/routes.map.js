@@ -16,39 +16,54 @@ const routes = [
                 path: '/:token_company/:token_table',
                 component: LoadTableCompany,
                 name: 'load.table.company',
-                props: true
+                props: true,
             },
 
             {
                 path: '/pedido/:identify',
                 component: DetailOrder,
                 name: 'order.detail',
-                props: true
+                props: true,
+                meta: {
+                    title: 'Detalhes do pedido'
+                },
             },
 
             {
                 path: '/meus-pedidos',
                 component: MyOrders,
                 name: 'my.orders',
+                meta: {
+                    title: 'Meus pedidos'
+                },
             },
 
             {
                 path: '/carrinho',
                 component: Cart,
                 name: 'cart',
+                meta: {
+                    title: 'Carrinho de compras'
+                },
             },
         
             {
                 path: '/loja/:companyFlag',
                 component: Products,
                 name: 'products',
-                props: true
+                props: true,
+                meta: {
+                    title: 'Produtos'
+                },
             },
         
             {
                 path: '/',
                 component: Home,
                 name: 'home',
+                meta: {
+                    title: 'Home VueFood'
+                },
             },
         ]
     },
@@ -60,13 +75,19 @@ const routes = [
             {
                 path: '/entrar',
                 component: Login,
-                name: 'login'
+                name: 'login',
+                meta: {
+                    title: 'Login - VueFood'
+                },
             },
         
             {
                 path: '/cadastrar',
                 component: Register,
-                name: 'register'
+                name: 'register',
+                meta: {
+                    title: 'Cadastrar-se VueFood'
+                },
             },
         ]
 
